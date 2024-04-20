@@ -1,7 +1,7 @@
 <template>
     <div class="file-upload">
-          <input type="file" @change="handleFileChange" ref="fileInput" />
-          <button @click="uploadFile">Check</button>
+        <ElButton type="primary"><input type="file" @change="handleFileChange" ref="fileInput" /></ElButton>
+          <button @click="detectPermissionFields">Check/</button>
         </div>
     <div class="split-screen">
       <div class="left-column">
@@ -9,20 +9,25 @@
           <h2>File Raw</h2>
           <iframe :src="fileUrl1" width="100%" height="500px" frameborder="0"></iframe>
         </div>
-        
       </div>
       <div class="right-column">
-        <div v-if="file1">
-          <h2>File Detect</h2>
-          <iframe :src="fileUrl1" width="100%" height="500px" frameborder="0"></iframe>
+        <div v-if="file2">
+          <h2>File Result</h2>
+          <iframe :src="fileUrl2" width="100%" height="500px" frameborder="0"></iframe>
         </div>
       </div>
     </div>
+
   </template>
   
   <script>
+import { ElButton } from 'element-plus';
+ 
   export default {
-    name: 'SplitScreen',
+    name: 'UploadFile',
+    components:{
+      ElButton
+    },
     data() {
       return {
         file1: null,
@@ -33,17 +38,11 @@
     },
     methods: {
       handleFileChange(event) {
-        if (!this.file1) {
           this.file1 = event.target.files[0];
           this.fileUrl1 = URL.createObjectURL(this.file1);
-        } else if (!this.file2) {
-          this.file2 = event.target.files[0];
-          this.fileUrl2 = URL.createObjectURL(this.file2);
-        } else {
-          alert("You can only upload two files.");
-        }
       },
-      uploadFile() {
+      detectPermissionFields() {
+        this.file2 = this.file1;
         this.fileUrl2 = URL.createObjectURL(this.file1);
         alert('11111')
       }
