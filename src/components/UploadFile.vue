@@ -44,7 +44,6 @@ import { ElButton } from 'element-plus';
       detectPermissionFields() {
         this.file2 = this.file1;
         this.fileUrl2 = URL.createObjectURL(this.file1);
-        alert('11111')
       }
     }
   };
