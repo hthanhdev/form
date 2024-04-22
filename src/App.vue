@@ -1,28 +1,33 @@
 <template>
-  <HelloWorld msg="Welcome to super app by thanh-nguyenhoang"/>
-  <UploadFile></UploadFile>
+  <div id="app">
+    <Header />
+    <div class="container">
+      <Sidebar />
+      <MainContent />
+    </div>
+    <Footer />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import UploadFile from './components/UploadFile.vue'
+import Header from './components/Header.vue';
+import Sidebar from './components/Sidebar.vue';
+import MainContent from './components/Main.vue';
+import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    UploadFile
-  }
-}
+    Header,
+    Sidebar,
+    MainContent,
+    Footer,
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.container {
+  display: flex;
 }
 </style>
